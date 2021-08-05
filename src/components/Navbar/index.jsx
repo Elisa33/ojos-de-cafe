@@ -1,4 +1,4 @@
-import React ,{useState}from 'react'
+import React ,{useState, useEffect}from 'react'
 import { Container, Menu, Logo, Search, Submenu, MenuHam, ItemMenu } from './styled.navbar'
 import logo from '../../assets/img/logo.png'
 
@@ -9,6 +9,30 @@ const Navbar = () => {
     const openMenu = ()=>{
         setMenu(!menu)
     }
+
+    useEffect(()=>{
+        getClima();
+
+    },[])
+
+    const [ mendoza, getMendoza ] = useState([])
+
+    const getClima = async ()=>{
+    const clima = await fetch('https://ws.smn.gob.ar/map_items/weather')
+    const datoClima = await clima.json()
+    getMendoza(datoClima)
+}    
+
+    const climamendoza = mendoza.filter(item => 
+        item.name === 'Mendoza'
+    )
+
+    const description = climamendoza[0].weather.description
+    const temp = climamendoza[0].weather.temp
+   
+
+   
+
     return (
         <>
             <Container>
@@ -27,7 +51,10 @@ const Navbar = () => {
                 <ItemMenu>Emprendiientos</ItemMenu>
                 <ItemMenu>Cultura</ItemMenu>
                 <ItemMenu>Diversidad</ItemMenu>
-            </Menu> : <Submenu>submenu</Submenu>}
+            </Menu> : <Submenu>{description} - {temp}</Submenu>}
+            {/* { mendoza.map(item => (
+                <p>{item.name}</p>
+            )) } */}
         </>
     )
 }

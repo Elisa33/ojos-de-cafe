@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import { Container } from './styled.main'
+import { Container, Titulo } from './styled.main'
 import Locales from '../Locales/Locales'
 import Principal from './../Principal/index';
 import New from './../New/index';
@@ -17,6 +17,11 @@ const Main = () => {
         setAll(todas)
     }
 
+    /* const getDataAll = async ()=>{
+        const datos = await fetch('https://wp.ojosdecafe.com/?rest_route=/gs/v1/home')
+        const todas = await datos.json()
+        setAll(todas)
+    } */
     
     
     useEffect(()=>{
@@ -24,23 +29,12 @@ const Main = () => {
     },[])
     
     const principal = all.principal;
-    //console.log(principal)
     const locales = all.locales
-    console.log(locales)
-
-
-    /* const getDataAll = async ()=>{
-        const datos = await fetch('https://wp.ojosdecafe.com/?rest_route=/gs/v1/home')
-        const todas = await datos.json()
-        setAll(todas)
-    } */
-
 
     return (
         <Container>
-
-            
             <Principal principal={principal}/>
+            <Titulo>Locales</Titulo>
             <Locales locales={locales}/>
             <New/>
         </Container>

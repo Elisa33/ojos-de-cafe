@@ -6,7 +6,6 @@ const Locales = ({locales}) => {
     const { titulo, imagen_destacada } = locales[0];
     return (
         <Wrapper>
-            <h3>Locales</h3>
             <Grid>
                 { locales.map(item =>
                     <Card>

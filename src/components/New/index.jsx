@@ -15,11 +15,12 @@ const New = ({ }) => {
         getNew()
     },[])
 
-    const {titulo, bajada, fecha, contenido} = nueva   
+    const {titulo, bajada, fecha, contenido, imagen_destacada} = nueva   
 
     return (
         <div>
             <Wrapper>
+                <img src={imagen_destacada} alt="" />
                 <h2>{titulo}</h2>
                 <h5>{bajada}</h5>
                 <span>{fecha}</span>

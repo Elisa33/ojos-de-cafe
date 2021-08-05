@@ -1,16 +1,19 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-    margin: 1rem;
+    margin: 2rem;
     h3{
         text-align: left;
+        
+        
     }
 `
 
 export const Grid = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
+    /* grid-auto-rows: 22rem; */
+    grid-template-columns: repeat(auto-fill, minmax(min(100%,20rem), 1fr));
 `
 export const Card = styled.div`
     border-radius: 1rem;
@@ -23,5 +26,7 @@ export const Card = styled.div`
     }
     h2{
         padding: 1rem;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.2rem;
     }
 ` 

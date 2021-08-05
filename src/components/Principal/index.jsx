@@ -10,8 +10,8 @@ const Principal = ({ principal}) => {
             <Wrapper>
                 <img src={imagen_destacada} alt="" />
                 <h2>{titulo}</h2>
-                <h5>{bajada}</h5>
                 <span>{fecha}</span>
+                <h5>{bajada}</h5>
             
             </Wrapper>
 

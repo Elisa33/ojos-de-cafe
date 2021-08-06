@@ -7,36 +7,57 @@ import New from './../New/index';
 const Main = () => {
 
     const [all, setAll] = useState([]) 
+    const [isFetching, setIsFetching] = useState(true);
+    const [error, setError] = useState();
 
-    const getDataAll = async ()=>{
-        const datos = await fetch('https://wp.ojosdecafe.com/?rest_route=/gs/v1/home',  {
-        "method": "GET",
-        "headers": {}
-    })
-        const todas = await datos.json()
-        setAll(todas)
-    }
-
-    /* const getDataAll = async ()=>{
-        const datos = await fetch('https://wp.ojosdecafe.com/?rest_route=/gs/v1/home')
-        const todas = await datos.json()
-        setAll(todas)
-    } */
-    
-    
+       
     useEffect(()=>{
+        console.log('entro al useefect')
+        const getDataAll = async ()=>{
+            setIsFetching(true)
+            console.log('entro al getdataall')
+            try{
+                console.log('entro al try')
+                const response = await fetch('https://wp.ojosdecafe.com/?rest_route=/gs/v1/home',{
+                    "method": "GET",
+                    "headers": {}
+                })
+                if(response.status === 200){
+                    console.log('esta ok en 200')
+                    const todas = await response.json()
+                    setAll(todas)
+                    setIsFetching(false)
+                }
+                else{
+                    console.log('Ups, hubo un error')
+                    setIsFetching(false);
+                    setError("Ups, hubo un error");
+                }
+            }catch(error){
+                console.log(error)
+                setError(e)
+                setIsFetching(false)
+            }
+        }
         getDataAll()
     },[])
     
-    const principal = all.principal;
-    const locales = all.locales
+    const principal = all ? all.principal : undefined;
+    const locales = all ? all.locales : undefined;
+    //console.log(principal.titulo)
+    //console.log(locales[1].titulo)
 
     return (
         <Container>
-            <Principal principal={principal}/>
-            <Titulo>Locales</Titulo>
-            <Locales locales={locales}/>
-            <New/>
+            {isFetching && <p>Loading...</p>} 
+            {error && <p>{error}</p>} 
+            {!isFetching && (
+                <>
+                    <Principal principal={principal}/>
+                    <Titulo>Locales</Titulo>
+                    <Locales locales={locales}/>
+                    <New/>
+                </>)}
         </Container>
     )
 }

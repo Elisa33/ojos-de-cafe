@@ -1,9 +1,9 @@
 import React from 'react'
 import { Wrapper} from './styled.principal'
 
-const Principal = ({ principal}) => {
+const Principal = ( props ) => {
 
-    const {titulo, bajada, fecha, imagen_destacada} = principal
+    const { principal: { titulo, bajada, fecha, imagen_destacada } } = props;
 
     return (
         <div>
@@ -12,7 +12,6 @@ const Principal = ({ principal}) => {
                 <h2>{titulo}</h2>
                 <span>{fecha}</span>
                 <h5>{bajada}</h5>
-            
             </Wrapper>
 
         </div>

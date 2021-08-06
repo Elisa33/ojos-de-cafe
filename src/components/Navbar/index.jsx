@@ -10,7 +10,7 @@ const Navbar = () => {
         setMenu(!menu)
     }
 
-    useEffect(()=>{
+    /* useEffect(()=>{
         getClima();
 
     },[])
@@ -25,12 +25,9 @@ const Navbar = () => {
 
     const climamendoza = mendoza.filter(item => 
         item.name === 'Mendoza'
-    )
+    ) */
 
-    const description = climamendoza[0].weather.description
-    const temp = climamendoza[0].weather.temp
-   
-
+    //const temp = climamendoza[0].weather.temp
    
 
     return (
@@ -47,14 +44,12 @@ const Navbar = () => {
                 <ItemMenu>Provinciales</ItemMenu>
                 <ItemMenu>Nacionales</ItemMenu>
                 <ItemMenu>Internacionales</ItemMenu>
-                <ItemMenu>Orbitnado</ItemMenu>
-                <ItemMenu>Emprendiientos</ItemMenu>
+                <ItemMenu>Orbitando</ItemMenu>
+                <ItemMenu>Emprendimientos</ItemMenu>
                 <ItemMenu>Cultura</ItemMenu>
                 <ItemMenu>Diversidad</ItemMenu>
-            </Menu> : <Submenu>{description} - {temp}</Submenu>}
-            {/* { mendoza.map(item => (
-                <p>{item.name}</p>
-            )) } */}
+            </Menu> : 
+            <Submenu>aqui temp</Submenu>}
         </>
     )
 }

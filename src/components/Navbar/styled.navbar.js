@@ -43,14 +43,27 @@ export const Submenu = styled.div`
 export const Menu = styled.div`
     background-color: #444;
     color: #fff;
-    display: flex;
+    display: grid;
     padding: 1rem 1rem;
-    justify-content: space-between;
+    grid-template-columns: repeat(8,1fr);
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        
+        padding: 0;
+    }
     
 `
 
 export const ItemMenu = styled.a`
     color: #eee;
+    @media (max-width: 768px) {
+        display: block;
+        padding: 1.2rem 0;
+        border-top:1px solid #fff;
+        :first-of-type {
+        border-top: none;
+        }
+    }
 
 `
 

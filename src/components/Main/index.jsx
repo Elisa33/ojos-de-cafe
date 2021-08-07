@@ -1,8 +1,16 @@
 import React,{useEffect, useState} from 'react'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 import { Container, Titulo } from './styled.main'
 import Locales from '../Locales/Locales'
 import Principal from './../Principal/index';
 import New from './../New/index';
+import Navbar from './../Navbar/index';
+import Footer from '../Footer';
 
 const Main = () => {
 
@@ -44,21 +52,33 @@ const Main = () => {
     
     const principal = all ? all.principal : undefined;
     const locales = all ? all.locales : undefined;
-    //console.log(principal.titulo)
-    //console.log(locales[1].titulo)
 
     return (
-        <Container>
-            {isFetching && <p>Loading...</p>} 
-            {error && <p>{error}</p>} 
-            {!isFetching && (
-                <>
-                    <Principal principal={principal}/>
-                    <Titulo>Locales</Titulo>
-                    <Locales locales={locales}/>
-                    <New/>
-                </>)}
-        </Container>
+        <Router>
+            <Navbar/>
+            <Container>
+                {isFetching && <p>Loading...</p>}
+                {error && <p>{error}</p>}
+                {!isFetching && (
+                    <>
+                        <Switch>
+                            <Route path="/locales/:slug" >
+                                <New/>
+                            </Route>
+                            <Route path="/locales" >
+                                <Titulo>Locales</Titulo>
+                                <Locales locales={locales}/>
+                            </Route>
+                            <Route path="/" exact>
+                                <Principal principal={principal}/>
+                                <Titulo>Locales</Titulo>
+                                <Locales locales={locales}/>
+                            </Route>
+                        </Switch>
+                    </>)}
+            </Container>
+            <Footer/>
+        </Router>
     )
 }
 

@@ -4,8 +4,6 @@ export const Wrapper = styled.div`
     margin: 2rem;
     h3{
         text-align: left;
-        
-        
     }
 `
 
@@ -28,5 +26,9 @@ export const Card = styled.div`
         padding: 1rem;
         font-family: 'Playfair Display', serif;
         font-size: 1.2rem;
+        color: #555;
     }
+    a:link, a:visited, a:active {
+    text-decoration:none;
+}
 ` 

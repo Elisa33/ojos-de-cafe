@@ -71,7 +71,7 @@ const Navbar = () => {
             </Container>
             
             {menu ? <Menu>
-                <ItemMenu to="/locales">Locales
+                <ItemMenu to="/locales" onClick={openMenu}>Locales
                 </ItemMenu>
                 <ItemMenu to="/provinciales">Provinciales</ItemMenu>
                 <ItemMenu to="/nacionales">Nacionales</ItemMenu>

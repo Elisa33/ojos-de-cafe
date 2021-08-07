@@ -1,33 +1,40 @@
 import React,{useState, useEffect} from 'react'
-import {Markupi, Wrapper} from './styled.new'
+import { useParams } from 'react-router-dom'
+import {Container, Markupi, Wrapper, Wrap, Column} from './styled.new'
+
 
 const New = ({ }) => {
 
+    
+    const {slug} = useParams()
+
     const [ nueva, setNueva] = useState([])
 
-    const getNew = async ()=>{
-        const noticia = await fetch('https://wp.ojosdecafe.com/?rest_route=/gs/v1/noticia/del-norte-de-suecia-al-sur-de-mendoza-abisko-tabaco-munchies')
-        const newprincipal = await noticia.json()
-        setNueva(newprincipal)
-    } 
-
+    
     useEffect(()=>{
+        const getNew = async ()=>{
+            const noticia = await fetch(`https://wp.ojosdecafe.com/?rest_route=/gs/v1/noticia/${slug}`)
+            const newprincipal = await noticia.json()
+            setNueva(newprincipal)
+        } 
         getNew()
-    },[])
+    },[slug])
 
     const {titulo, bajada, fecha, contenido, imagen_destacada} = nueva   
 
     return (
-        <div>
+        <Container>
             <Wrapper>
                 <img src={imagen_destacada} alt="" />
-                <h2>{titulo}</h2>
-                <h5>{bajada}</h5>
-                <span>{fecha}</span>
-                <Markupi content={contenido} />
+                <Wrap>
+                    <h2>{titulo}</h2>
+                    <h5>{bajada}</h5>
+                    <span>{fecha}</span>
+                    <Markupi content={contenido} />
+                </Wrap>
             </Wrapper>
-
-        </div>
+            <Column>columna</Column>
+        </Container>
     )
 }
 

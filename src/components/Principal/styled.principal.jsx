@@ -25,4 +25,9 @@ export const Wrapper = styled.div`
         max-height: 20rem;
     }
 
-` 
+`
+
+export const Wrap = styled.div`
+    padding: 1rem;
+`
+

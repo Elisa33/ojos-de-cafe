@@ -1,5 +1,5 @@
 import React from 'react'
-import { Wrapper} from './styled.principal'
+import { Wrapper, Wrap} from './styled.principal'
 
 const Principal = ( props ) => {
 
@@ -9,9 +9,11 @@ const Principal = ( props ) => {
         <div>
             <Wrapper>
                 <img src={imagen_destacada} alt="" />
-                <h2>{titulo}</h2>
-                <span>{fecha}</span>
-                <h5>{bajada}</h5>
+                <Wrap>
+                    <h2>{titulo}</h2>
+                    <span>{fecha}</span>
+                    <h5>{bajada}</h5>
+                </Wrap>
             </Wrapper>
 
         </div>

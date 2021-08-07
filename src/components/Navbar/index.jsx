@@ -1,55 +1,102 @@
 import React ,{useState, useEffect}from 'react'
-import { Container, Menu, Logo, Search, Submenu, MenuHam, ItemMenu } from './styled.navbar'
+import {
+    BrowserRouter as Router, Link
+  } from "react-router-dom";
+import { Container, Menu, Logo, Search, Submenu, GroupSubmenu, MenuHam, ItemMenu } from './styled.navbar'
 import logo from '../../assets/img/logo.png'
+import { SiInstagram, SiYoutube, SiTwitter, SiFacebook } from "react-icons/si";
+import { FaTemperatureLow } from "react-icons/fa";
 
 
 const Navbar = () => {
+    const fecha = new Date();
+    const meses = [
+        "Enero", "Febrero", "Marzo", "Abril",
+        "Mayo", "Junio", "Julio", "Agosto",
+        "Septiembre", "Octubre", "Noviembre", "Diciembre",
+    ];
+    const dias = ["Domingo", "Lunes","Martes",  "Miercoles","Jueves",  "Viernes", "Sábado"];
+    
+    const mes = meses[fecha.getMonth()]; 
+    const dia = dias[fecha.getDay()]; 
+    const anio = fecha.getFullYear(); 
+    const num = fecha.getDate(); 
+    const Hoy = `${dia}, ${num} de ${mes}, ${anio}`
+
     const [ menu, setMenu ] = useState(false)
 
     const openMenu = ()=>{
         setMenu(!menu)
     }
 
-    /* useEffect(()=>{
-        getClima();
-
+    const [ mendoza, getMendoza ] = useState([])
+    const [ isFetching, setIsFetching] = useState('')
+    useEffect(()=>{
+        const getClima = async ()=>{
+            setIsFetching(true)
+            try{
+                const response = await fetch('https://ws.smn.gob.ar/map_items/weather')
+                if(response.status === 200){
+                    const clima = await response.json()
+                    getMendoza(clima)
+                    setIsFetching(false)
+                }
+                else{
+                    console.log('Ups, hubo un error')
+                    setIsFetching(false);
+                }
+            }catch(error){
+                console.log(error)
+                setIsFetching(false)
+            }
+        }
+        getClima()
     },[])
 
-    const [ mendoza, getMendoza ] = useState([])
-
-    const getClima = async ()=>{
-    const clima = await fetch('https://ws.smn.gob.ar/map_items/weather')
-    const datoClima = await clima.json()
-    getMendoza(datoClima)
-}    
-
-    const climamendoza = mendoza.filter(item => 
+    const climamendoza = mendoza.find(item => 
         item.name === 'Mendoza'
-    ) */
+        )
 
-    //const temp = climamendoza[0].weather.temp
-   
+    const tempMendoza = climamendoza && climamendoza.weather.temp
 
     return (
         <>
             <Container>
                 <MenuHam onClick={openMenu}>
                 { menu ? <span>&#9747;</span> : <span>&#9776;</span> }</MenuHam>
-                <Logo src={logo}></Logo>
+                <Link to="/">
+                    <Logo src={logo}></Logo>
+                </Link>
                 <Search>&#x26B2;</Search>
             </Container>
             
             {menu ? <Menu>
-                <ItemMenu href=''>Locales</ItemMenu>
-                <ItemMenu>Provinciales</ItemMenu>
-                <ItemMenu>Nacionales</ItemMenu>
-                <ItemMenu>Internacionales</ItemMenu>
-                <ItemMenu>Orbitando</ItemMenu>
-                <ItemMenu>Emprendimientos</ItemMenu>
-                <ItemMenu>Cultura</ItemMenu>
-                <ItemMenu>Diversidad</ItemMenu>
+                <ItemMenu to="/locales">Locales
+                </ItemMenu>
+                <ItemMenu to="/provinciales">Provinciales</ItemMenu>
+                <ItemMenu to="/nacionales">Nacionales</ItemMenu>
+                <ItemMenu to="/internacionales">Internacionales</ItemMenu>
+                <ItemMenu to="/orbitando">Orbitando</ItemMenu>
+                <ItemMenu to="/emprendimientos">Emprendimientos</ItemMenu>
+                <ItemMenu to="/cultura">Cultura</ItemMenu>
+                <ItemMenu to="/diversidad">Diversidad</ItemMenu>
             </Menu> : 
-            <Submenu>aqui temp</Submenu>}
+            <Submenu>
+                <GroupSubmenu>
+                Dólar: venta $101,75 / compra $95,75 BNA
+                </GroupSubmenu>
+                <GroupSubmenu>
+                    <SiInstagram />
+                    <SiTwitter />
+                    <SiFacebook />
+                    <SiYoutube />
+                </GroupSubmenu>
+                {!isFetching && 
+                <GroupSubmenu>
+                    <FaTemperatureLow />
+                    {tempMendoza} °C {Hoy}
+                </GroupSubmenu> }
+            </Submenu>}
         </>
     )
 }

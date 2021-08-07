@@ -7,16 +7,20 @@ export const Container = styled.div`
 
 export const Logo = styled.img`
     width: 8rem;
-    margin: 1rem;
+    margin: 1rem 0;
     
 `
 
 export const Contact = styled.div`
-    margin: 0.5rem auto;
+    margin: 1rem auto;
     max-width: 30rem;
     display: flex ;
     justify-content: center;
     gap: 3rem;
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap:1.2rem;
+    }
 `
 
 export const Wrap = styled.div`
@@ -27,9 +31,6 @@ export const Wrap = styled.div`
     gap:8px;
 `
 
-export const Icon = styled.div`
-    color:coral;
-`
 export const Copy = styled.p`
     background-color: #333;
     padding: 1rem;

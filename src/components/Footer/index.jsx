@@ -1,6 +1,9 @@
 import React from 'react'
-import {Container, Logo, Contact, Wrap, Icon, Copy} from './styled.footer';
+import {Container, Logo, Contact, Wrap, Copy} from './styled.footer';
 import logo from '../../assets/img/logo.png'
+import { IoChatboxOutline } from "react-icons/io5";
+import { HiOutlinePhone } from "react-icons/hi";
+import { SiInstagram, SiYoutube, SiTwitter, SiFacebook } from "react-icons/si";
 
 const Footer = () => {
     return (
@@ -8,21 +11,21 @@ const Footer = () => {
             <Logo src={logo}></Logo>
             <Contact>
                 <Wrap>
-                    <Icon>icon </Icon>
+                    <IoChatboxOutline/>
                     <p>ojosdecafeweb@gmail.com</p>
                 </Wrap>
                 <Wrap>
-                    <Icon>icon </Icon>
+                    <HiOutlinePhone/>
                     <p>+54 9 260 4235624</p>
                 </Wrap>
                 <Wrap>
-                    <Icon>ic</Icon>
-                    <Icon>ic</Icon>
-                    <Icon>ic</Icon>
-                    <Icon>ic</Icon>
+                    <SiInstagram />
+                    <SiTwitter />
+                    <SiFacebook />
+                    <SiYoutube />
                 </Wrap>
             </Contact>
-            <Copy>Desarrollado por Gorilla</Copy>
+            <Copy>Desarrollado por Gorillasite</Copy>
         </Container>
     )
 }

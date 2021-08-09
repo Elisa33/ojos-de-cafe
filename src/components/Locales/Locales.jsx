@@ -3,6 +3,7 @@ import { Card, Wrapper, Grid} from './styled.locales';
 import {Link} from 'react-router-dom'
 
 const Locales = (props) => {
+
    const { locales } = props;
     return (
         <Wrapper>

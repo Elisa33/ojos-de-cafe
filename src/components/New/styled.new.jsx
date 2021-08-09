@@ -22,7 +22,13 @@ export const Markupi = styled(Markup)`
      color: #555;
      text-align: left;
      padding: 0.5rem 1rem;
+
  }
+    li{
+        list-style: none;
+        text-align: left;
+        padding: 0.2rem 1rem;
+    }
 `
 
 export const Wrapper = styled.div`

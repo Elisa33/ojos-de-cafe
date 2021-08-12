@@ -1,5 +1,5 @@
 import React, {useState,useEffect}from 'react'
-import { Card, Wrapper, Grid} from './styled.provinciales';
+import { Card, Wrapper, Grid} from '../styled.common';
 import {Link} from 'react-router-dom'
 import useFetch from './../Main/useFetch';
 
@@ -14,11 +14,9 @@ const Provinciales = () => {
     const [provinciales, setProvinciales] = useState([]);
     
     useEffect(() => {
-        console.log('useeffect2', provinciales)
-        console.log('useeffect2', apiData)
+
         if(apiData && provinciales.length === 0){
             setProvinciales(apiData.listado)
-            console.log('entro al if' ,provinciales)
         }
     }, [provinciales, setProvinciales, apiData]);
   
@@ -27,7 +25,7 @@ const Provinciales = () => {
 
     return (
         <Wrapper>
-            <Grid>
+            <Grid col='10rem'>
                 {isLoading && <p>Loading...</p>}
                 {serverError && <p>{serverError}</p>}
                 {!isLoading && (

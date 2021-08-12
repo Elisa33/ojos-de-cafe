@@ -1,10 +1,10 @@
 import React,{useState, useEffect} from 'react'
-import { Card, Wrapper, Grid} from './styled.locales';
+import { Card, Wrapper, Grid} from '../styled.common';
 import {Link} from 'react-router-dom'
 import useFetch from './../Main/useFetch';
 
 
-const Locales = (props) => {
+const Locales = () => {
 
         const { isLoading,  apiData, serverError } = useFetch(
         'https://wp.ojosdecafe.com/?rest_route=/gs/v1/etiqueta/locales'

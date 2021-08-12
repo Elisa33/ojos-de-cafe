@@ -11,12 +11,13 @@ export const Grid = styled.div`
     display: grid;
     gap: 1rem;
     /* grid-auto-rows: 22rem; */
-    grid-template-columns: repeat(auto-fill, minmax(min(100%,20rem), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%,${(props)=>props.col ? props.col : '20rem'}), 1fr));
 `
 export const Card = styled.div`
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     box-shadow: 0px 2px 10px rgb(23 24 33 / 15%);
     overflow: hidden;
+    transition: all 0.3s ease;
     img{
         height: 14rem;
         object-fit: cover;
@@ -29,6 +30,10 @@ export const Card = styled.div`
         color: #555;
     }
     a:link, a:visited, a:active {
-    text-decoration:none;
-}
+        text-decoration:none;
+    }
+    &:hover{
+        box-shadow: 0px 3px 15px rgb(23 24 33 / 25%);
+
+    }
 ` 

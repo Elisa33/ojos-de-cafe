@@ -6,8 +6,10 @@ import {
     Link
   } from "react-router-dom";
 import { Container, Titulo } from './styled.main'
-import Provinciales from '../Provinciales/index'
 import Locales from '../Locales'
+import Provinciales from '../Provinciales/index'
+import Nacionales from '../Nacionales';
+import Internacionales from './../Internacionales/index';
 import Principal from './../Principal/index';
 import New from './../New/index';
 import Navbar from './../Navbar/index';
@@ -82,10 +84,15 @@ const Main = () => {
                             )}
                                 <Titulo color='coral'>Locales</Titulo>
                                 <Locales/>
-                           
-
+        
                                 <Titulo color='violet'>Provinciales</Titulo>
                                 <Provinciales/>
+
+                                <Titulo color='blue'>Nacionales</Titulo>
+                                <Nacionales/>
+
+                                <Titulo color='green'>Internacionales</Titulo>
+                                <Internacionales/>
     
                             </Route>
                         </Switch>

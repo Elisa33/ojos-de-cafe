@@ -67,30 +67,24 @@ const Main = () => {
                             <Route path="/locales/:slug" >
                                 <New/>
                             </Route>
+                            <Route path="/locales" exact>
+                                <Locales/>
+                            </Route>
                             <Route path="/:slug" exact>
                                 <New/>
                             </Route>
-                           
-                            <Route path="/locales" >
-                                <Titulo>Locales</Titulo>
-                            {/* {isLoadingLocales && <p>Loading...</p>}
-                            {errorLocales && <p>{errorLocales}</p>}
-                            {!isLoadingLocales && (
-                                <Locales locales={locales}/>
-                            )} */}
-                            </Route>
-                            
+
                             <Route path="/" exact>
                             {isFetching && <p>Loading...</p>}
                             {error && <p>{error}</p>}
                             {!isFetching && (
                                 <Principal principal={principal}/>
                             )}
-                                <Titulo>Locales</Titulo>
+                                <Titulo color='coral'>Locales</Titulo>
                                 <Locales/>
                            
 
-                                <Titulo>Provinciales</Titulo>
+                                <Titulo color='violet'>Provinciales</Titulo>
                                 <Provinciales/>
     
                             </Route>

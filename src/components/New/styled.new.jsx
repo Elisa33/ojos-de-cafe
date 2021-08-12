@@ -33,7 +33,7 @@ export const Markupi = styled(Markup)`
 
 export const Wrapper = styled.div`
     box-shadow: 0px 2px 10px rgb(23 24 33 / 15%);
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     
     display: flex;
     overflow: hidden;

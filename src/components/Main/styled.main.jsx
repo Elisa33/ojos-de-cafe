@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 export const Titulo = styled.h2` 
     text-align: left;
-    margin-left: 2rem;
+    margin: 3.5rem 0 2rem 0;
     padding-left: 1rem;
     border-left: 5px solid ${props => Colors[props.color]};
 

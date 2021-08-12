@@ -7,7 +7,6 @@ const useFetch = (url) => {
   
     useEffect(() => {
       setIsLoading(true);
-      console.log('entro al usefect de fetch')
       const fetchData = async () => {
           try {
               const resp = await fetch(url);
@@ -15,7 +14,6 @@ const useFetch = (url) => {
               
               setApiData(data);
               setIsLoading(false);
-              console.log('entro al try de fetch')
             } catch (error) {
                 setServerError(error);
                 setIsLoading(false);
@@ -23,7 +21,6 @@ const useFetch = (url) => {
         };
         
         fetchData();
-        console.log('terminoel fetch')
     }, [url]);
   
     return { isLoading, apiData, serverError };

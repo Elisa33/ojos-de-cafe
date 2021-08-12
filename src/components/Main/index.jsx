@@ -6,14 +6,16 @@ import {
     Link
   } from "react-router-dom";
 import { Container, Titulo } from './styled.main'
+import Navbar from './../Navbar/index';
 import Locales from '../Locales'
 import Provinciales from '../Provinciales/index'
 import Nacionales from '../Nacionales';
 import Internacionales from './../Internacionales/index';
 import Principal from './../Principal/index';
 import New from './../New/index';
-import Navbar from './../Navbar/index';
 import Footer from '../Footer';
+import PrincipalDos from './../PrincipalDos/index';
+
 
 const Main = () => {
 
@@ -69,29 +71,48 @@ const Main = () => {
                             <Route path="/locales/:slug" >
                                 <New/>
                             </Route>
+                            <Route path="/nacionales/:slug" >
+                                <New/>
+                            </Route>
+                            <Route path="/internacionales/:slug" >
+                                <New/>
+                            </Route>
+
                             <Route path="/locales" exact>
+                                <h1>locales</h1>
                                 <Locales/>
+                            </Route>
+                            <Route path="/provinciales" exact>
+                                <Provinciales/>
+                            </Route>
+                            <Route path="/nacionales" exact>
+                                <Nacionales/>
+                            </Route>
+                            <Route path="/internacionales" exact>
+                                <Internacionales/>
                             </Route>
                             <Route path="/:slug" exact>
                                 <New/>
                             </Route>
-
                             <Route path="/" exact>
                             {isFetching && <p>Loading...</p>}
                             {error && <p>{error}</p>}
                             {!isFetching && (
                                 <Principal principal={principal}/>
                             )}
-                                <Titulo color='coral'>Locales</Titulo>
+                                
+                                {/* <PrincipalDos/> */}
+
+                                <Titulo color='Yellow'>Locales</Titulo>
                                 <Locales/>
         
-                                <Titulo color='violet'>Provinciales</Titulo>
+                                <Titulo color='LightBlue'>Provinciales</Titulo>
                                 <Provinciales/>
 
-                                <Titulo color='blue'>Nacionales</Titulo>
+                                <Titulo color='MediumBlue'>Nacionales</Titulo>
                                 <Nacionales/>
 
-                                <Titulo color='green'>Internacionales</Titulo>
+                                <Titulo color='DarkGreen'>Internacionales</Titulo>
                                 <Internacionales/>
     
                             </Route>

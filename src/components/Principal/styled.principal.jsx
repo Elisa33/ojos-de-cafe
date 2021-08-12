@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 export const Wrapper = styled(Link)`
     overflow: hidden;
     box-shadow: 0px 2px 10px rgb(23 24 33 / 15%);
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     margin: 2rem;
     display: flex;
     flex-direction: column;

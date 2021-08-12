@@ -1,3 +1,4 @@
+import { ATTRIBUTES_TO_PROPS } from "interweave";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -19,7 +20,7 @@ export const Titulo = styled.h2`
         left: -10px;
         width: 5px;
         height: 30px;
-        background-color: coral;
+        background-color: ${(props)=> props.color};
         color: violet;
     }
 

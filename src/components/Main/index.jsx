@@ -5,9 +5,10 @@ import {
     Route,
     Link
   } from "react-router-dom";
-import { Container, Titulo } from './styled.main'
+import { Container, Etiqueta } from './styled.main'
+import { IoChatboxOutline, IoTimeOutline } from "react-icons/io5";
 import Navbar from './../Navbar/index';
-import {Card, Wrapper, Grid} from './../styled.common';
+import {Card, Wrapper, Grid, Row, Wrap, Tag, Titulo} from './../styled.common';
 import Locales from '../Locales'
 import Provinciales from '../Provinciales/index'
 import Nacionales from '../Nacionales';
@@ -111,154 +112,189 @@ const Main = () => {
                                 <Principal principal={principal}/>
                             )}
                                 
-                               
 
                                 {isFetching && <p>Loading...</p>}
                                 {error && <p>{error}</p>}
                                 <Wrapper>
-                                    <Titulo color='Yellow'>Destacadas</Titulo>
-                                    <Grid col='20rem'>
+                                    <Etiqueta color='Blue'>Destacadas</Etiqueta>
+                                    <Grid col='24rem'>
                                         {!isFetching && (
                                             destacadas.map(item =>
                                                 (<Card key={item.id}>
                                                     <Link to={`/destacadas/${item.slug}`}>
-                                                        <img src={item.imagen_destacada} alt="" />
-                                                        <h2>{item.titulo}</h2>
+                                                            <img src={item.imagen_destacada} alt="" />
+                                                        <Wrap color="Violet">
+                                                            <Tag color='Green'>{item.categorias.nombre} Sociedad</Tag>
+                                                            <Titulo>{item.titulo}</Titulo>
+                                                            <Row>
+                                                                <IoChatboxOutline/>
+                                                                <p>{item.autor.nombre}</p>
+                                                                <IoTimeOutline/>
+                                                                <p>{item.fecha}</p>
+                                                            </Row>
+                                                        </Wrap>
+                                                 
                                                     </Link>
                                                 </Card>))
                                         )}
                                     </Grid>
 
-                                    <Titulo color='Yellow'>Locales</Titulo>
-                                    <Grid col='20rem'>
+                                    <Etiqueta color='Yellow'>Locales</Etiqueta>
+                                    <Grid col='15rem'>
                                         {!isFetching && (
                                             localitos.map(item =>
                                                 (<Card key={item.id}>
                                                     <Link to={`/locales/${item.slug}`}>
-                                                        <img src={item.imagen_destacada} alt="" />
-                                                        <h2>{item.titulo}</h2>
+                                                            <img src={item.imagen_destacada} alt="" />
+                                                        <Wrap>
+                                                            <Titulo>{item.titulo}</Titulo>
+                                                        </Wrap>
                                                     </Link>
                                                 </Card>))
                                         )}
                                     </Grid>
 
-                                    <Titulo color='LightBlue'>Provinciales</Titulo>
-                                    <Grid col='20rem'>
+                                    <Etiqueta color='LightBlue'>Provinciales</Etiqueta>
+                                    <Grid col='15rem'>
                                         {!isFetching && (
                                             provinciales.map(item =>
                                                 (<Card key={item.id}>
                                                     <Link to={`/provinciales/${item.slug}`}>
-                                                        <img src={item.imagen_destacada} alt="" />
-                                                        <h2>{item.titulo}</h2>
+                                                            <img src={item.imagen_destacada} alt="" />
+                                                        <Wrap>
+                                                            <Titulo height='8rem'>{item.titulo}</Titulo>
+                                                            <p>{item.bajada}</p>
+                                                        </Wrap>
                                                     </Link>
                                                 </Card>))
                                         )}
                                     </Grid>
 
-                                    <Titulo color='Blue'>Nacionales</Titulo>
-                                    <Grid col='20rem'>
+                                    <Etiqueta color='MediumBlue'>Nacionales</Etiqueta>
+                                    <Grid col='15rem'>
                                         {!isFetching && (
                                             nacionales.map(item =>
                                                 (<Card key={item.id}>
                                                     <Link to={`/nacionales/${item.slug}`}>
-                                                        <img src={item.imagen_destacada} alt="" />
-                                                        <h2>{item.titulo}</h2>
+                                                            <img src={item.imagen_destacada} alt="" />
+                                                        <Wrap>
+                                                            <Titulo height='8rem'>{item.titulo}</Titulo>
+                                                            <p>{item.bajada}</p>
+                                                        </Wrap>
                                                     </Link>
                                                 </Card>))
                                         )}
                                     </Grid>
-                                    <Titulo color='DarkGreen'>Internacionales</Titulo>
-                                    <Grid col='20rem'>
+                                    <Etiqueta color='DarkGreen'>Internacionales</Etiqueta>
+                                    <Grid col='24rem'>
                                         {!isFetching && (
                                             internacionales.map(item =>
                                                 (<Card key={item.id}>
                                                     <Link to={`/internacionales/${item.slug}`}>
-                                                        <img src={item.imagen_destacada} alt="" />
-                                                        <h2>{item.titulo}</h2>
+                                                            <img src={item.imagen_destacada} alt="" />
+                                                        <Wrap>
+                                                            <Titulo height='8rem'>{item.titulo}</Titulo>
+                                                            <p>{item.bajada}</p>
+                                                        </Wrap>
                                                     </Link>
                                                 </Card>))
                                         )}
                                     </Grid>
-                                    <Titulo color='DarkGreen'>Café Academico</Titulo>
-                                    <Grid col='20rem'>
-                                        {!isFetching && (
-                                            cafeacademico.map(item =>
-                                                (<Card key={item.id}>
-                                                    <Link to={`/cafe-academico/${item.slug}`}>
-                                                        <img src={item.imagen_destacada} alt="" />
-                                                        <h2>{item.titulo}</h2>
-                                                    </Link>
-                                                </Card>))
-                                        )}
-                                    </Grid>
-                                    <Titulo color='DarkGreen'>Orbitando</Titulo>
-                                    <Grid col='20rem'>
+                                    <Etiqueta color='Green'>Orbitando</Etiqueta>
+                                    <Grid col='15rem'>
                                         {!isFetching && (
                                             orbitando.map(item =>
                                                 (<Card key={item.id}>
                                                     <Link to={`/orbitando/${item.slug}`}>
-                                                        <img src={item.imagen_destacada} alt="" />
-                                                        <h2>{item.titulo}</h2>
+                                                            <img src={item.imagen_destacada} alt="" />
+                                                        <Wrap>
+                                                            <Titulo>{item.titulo}</Titulo>
+                                                        </Wrap>
                                                     </Link>
                                                 </Card>))
                                         )}
                                     </Grid>
-                                    <Titulo color='DarkGreen'>Opiniones</Titulo>
+                                    <Etiqueta color='DarkRed'>Opiniones</Etiqueta>
                                     <Grid col='20rem'>
                                         {!isFetching && (
                                             opiniones.map(item =>
                                                 (<Card key={item.id}>
                                                     <Link to={`/opiniones/${item.slug}`}>
-                                                        <img src={item.imagen_destacada} alt="" />
-                                                        <h2>{item.titulo}</h2>
+                                                            <img src={item.imagen_destacada} alt="" />
+                                                        <Wrap>
+                                                            <Titulo>{item.titulo}</Titulo>
+                                                        </Wrap>
                                                     </Link>
                                                 </Card>))
                                         )}
                                     </Grid>
-                                    <Titulo color='DarkGreen'>Información Despierta</Titulo>
-                                    <Grid col='20rem'>
+                                    <Etiqueta color='Pink'>Café Academico</Etiqueta>
+                                    <Grid col='15rem'>
+                                        {!isFetching && (
+                                            cafeacademico.map(item =>
+                                                (<Card key={item.id}>
+                                                    <Link to={`/cafe-academico/${item.slug}`}>
+                                                            <img src={item.imagen_destacada} alt="" />
+                                                        <Wrap>
+                                                            <Titulo>{item.titulo}</Titulo>
+                                                        </Wrap>
+                                                    </Link>
+                                                </Card>))
+                                        )}
+                                    </Grid>
+                                    <Etiqueta color='MediumBlue'>Información Despierta</Etiqueta>
+                                    <Grid col='24rem'>
                                         {!isFetching && (
                                             informaciondespierta.map(item =>
                                                 (<Card key={item.id}>
                                                     <Link to={`/informacion-despierta/${item.slug}`}>
-                                                        <img src={item.imagen_destacada} alt="" />
-                                                        <h2>{item.titulo}</h2>
+                                                            <img src={item.imagen_destacada} alt="" />
+                                                        <Wrap>
+                                                            <Titulo>{item.titulo}</Titulo>
+                                                        </Wrap>
                                                     </Link>
                                                 </Card>))
                                         )}
                                     </Grid>
-                                    <Titulo color='DarkGreen'>Emprendimientos</Titulo>
-                                    <Grid col='20rem'>
+                                    <Etiqueta color='MediumPink'>Emprendimientos</Etiqueta>
+                                    <Grid col='60rem'>
                                         {!isFetching && (
                                             emprendimientos.map(item =>
                                                 (<Card key={item.id}>
                                                     <Link to={`/emprendimientos/${item.slug}`}>
-                                                        <img src={item.imagen_destacada} alt="" />
-                                                        <h2>{item.titulo}</h2>
+                                                            <img src={item.imagen_destacada} alt="" />
+                                                        <Wrap>
+                                                            <Titulo>{item.titulo}</Titulo>
+                                                            <p>{item.bajada}</p>
+                                                        </Wrap>
                                                     </Link>
                                                 </Card>))
                                         )}
                                     </Grid>
-                                    <Titulo color='DarkGreen'>Cultura</Titulo>
-                                    <Grid col='20rem'>
+                                    <Etiqueta color='DarkGreen'>Cultura</Etiqueta>
+                                    <Grid col='15rem'>
                                         {!isFetching && (
                                             cultura.map(item =>
                                                 (<Card key={item.id}>
                                                     <Link to={`/cultura/${item.slug}`}>
-                                                        <img src={item.imagen_destacada} alt="" />
-                                                        <h2>{item.titulo}</h2>
+                                                            <img src={item.imagen_destacada} alt="" />
+                                                        <Wrap>
+                                                            <Titulo>{item.titulo}</Titulo>
+                                                        </Wrap>
                                                     </Link>
                                                 </Card>))
                                         )}
                                     </Grid>
-                                    <Titulo color='DarkGreen'>Diversidad</Titulo>
-                                    <Grid col='20rem'>
+                                    <Etiqueta color='Violet'>Diversidad</Etiqueta>
+                                    <Grid col='15rem'>
                                         {!isFetching && (
                                             diversidad.map(item =>
                                                 (<Card key={item.id}>
                                                     <Link to={`/diversidad/${item.slug}`}>
-                                                        <img src={item.imagen_destacada} alt="" />
-                                                        <h2>{item.titulo}</h2>
+                                                            <img src={item.imagen_destacada} alt="" />
+                                                        <Wrap>
+                                                            <Titulo>{item.titulo}</Titulo>
+                                                        </Wrap>
                                                     </Link>
                                                 </Card>))
                                         )}

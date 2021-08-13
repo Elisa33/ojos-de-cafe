@@ -1,27 +1,9 @@
 import styled from 'styled-components'
-
-export const Colors = {
-    LightBlue: `#BEE3F8`,
-    Blue: "#4A77B1",
-    Yellow: "#F2B15D",
-    MediumBlue: `#63B3ED`,
-    Green: `#85A77B`,
-    MediumGreen: `#748367`,
-    DarkGreen: `#2C7A7B`,
-    Red: `#D56441`,
-    DarkRed: `#7B341E`,
-    Pink: `#ED64A6`,
-    MediumPink: `#F56565`,
-    Violet: `#667EEA`,
-    MediumViolet: `#6B46C1`,
-  }
-
+import {Colors} from './styled.colors'
 
 export const Wrapper = styled.div`
     margin: 2rem;
-    h3{
-        text-align: left;
-    }
+    text-align: left;
 `
 
 export const Grid = styled.div`
@@ -40,13 +22,7 @@ export const Card = styled.div`
         object-fit: cover;
         width: 100%;
     }
-    h2{
-        padding: 1rem;
-        font-family: 'Playfair Display', serif;
-        font-size: 1.2rem;
-        color: #555;
 
-    }
     a:link, a:visited, a:active {
         text-decoration:none;
     }
@@ -55,3 +31,31 @@ export const Card = styled.div`
 
     }
 ` 
+export const Titulo = styled.div`
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #555;
+    min-height: ${(props)=> props.height ? props.height : ''};
+`
+export const Wrap = styled.div`
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    color: ${Colors.Gray};
+`
+
+export const Tag = styled.div`
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        padding: 0 3px;
+        padding-bottom: 4px;
+        border-bottom: 4px solid ${(props)=> Colors[props.color]};
+        display: flex;
+        align-self: flex-start; 
+        color: ${Colors.Gray}    
+`
+export const Row = styled.div`
+    display: flex;
+    gap: .5rem;
+`

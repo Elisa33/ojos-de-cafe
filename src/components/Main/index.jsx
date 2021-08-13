@@ -9,12 +9,13 @@ import { Container, Etiqueta } from './styled.main'
 import { IoChatboxOutline, IoTimeOutline } from "react-icons/io5";
 import Navbar from './../Navbar/index';
 import {Card, Wrapper, Grid, Row, Wrap, Tag, Titulo, Bajada, Publi, Perfil, OpLink} from './../styled.common';
-import Locales from '../Locales'
+import Locales from '../Noticias'
 import Provinciales from '../Provinciales/index'
 import Nacionales from '../Nacionales';
 import Internacionales from './../Internacionales/index';
 import New from './../New/index';
 import Footer from '../Footer';
+import Noticias from './../Noticias/index';
 
 
 
@@ -73,35 +74,24 @@ const Main = () => {
             <Navbar/>
             <Container>
                 <Switch>
-                    <Route path="/provinciales/:slug" >
+                    {/* <Route path="/provinciales/:slug" >
                         <New/>
-                    </Route>
-                    <Route path="/locales/:slug" >
-                        <New/>
-                    </Route>
-                    <Route path="/nacionales/:slug" >
-                        <New/>
-                    </Route>
-                    <Route path="/internacionales/:slug" >
-                        <New/>
-                    </Route>
-                    <Route path="/emprendimientos/:slug" >
-                        <New/>
-                    </Route>
+                    </Route> */}
+                    
 
                     <Route path="/locales" exact>
-                        <h1>locales</h1>
-                        <Locales/>
+                        <Noticias etiqueta="locales"/>
                     </Route>
                     <Route path="/provinciales" exact>
-                        <Provinciales/>
+                        <Noticias etiqueta="provinciales"/>
                     </Route>
                     <Route path="/nacionales" exact>
-                        <Nacionales/>
+                        <Noticias etiqueta="nacionales"/>
                     </Route>
                     <Route path="/internacionales" exact>
-                        <Internacionales/>
+                        <Noticias etiqueta="internacionales"/>
                     </Route>
+                  
                     <Route path="/:slug" exact>
                         <New/>
                     </Route>
@@ -113,23 +103,23 @@ const Main = () => {
                             <Grid col='40rem'>
                                 {!isFetching && (
                                     
-                                        <Card key={principal.id}>
-                                            <Link to={`/destacadas/${principal.slug}`}>
-                                                    <img src={principal.imagen_destacada} alt="" />
-                                                <Wrap color="Violet">
-                                                    <Tag color='Green'>{principal.categorias.nombre} Sociedad</Tag>
-                                                    <Titulo>{principal.titulo}</Titulo>
-                                                    <p>{principal.bajada}</p>
-                                                    <Row>
-                                                        <IoChatboxOutline/>
-                                                        <p>{principal.autor.nombre}</p>
-                                                        <IoTimeOutline/>
-                                                        <p>{principal.fecha}</p>
-                                                    </Row>
-                                                </Wrap>
-                                            
-                                            </Link>
-                                        </Card>
+                                <Card key={principal.id}>
+                                    <Link to={`/${principal.slug}`}>
+                                            <img src={principal.imagen_destacada} alt="" />
+                                        <Wrap color="Violet">
+                                            <Tag color='Green'>{principal.categorias.nombre} Sociedad</Tag>
+                                            <Titulo>{principal.titulo}</Titulo>
+                                            <p>{principal.bajada}</p>
+                                            <Row>
+                                                <IoChatboxOutline/>
+                                                <p>{principal.autor.nombre}</p>
+                                                <IoTimeOutline/>
+                                                <p>{principal.fecha}</p>
+                                            </Row>
+                                        </Wrap>
+                                    
+                                    </Link>
+                                </Card>
                                 )}
                             </Grid>
                             <Etiqueta color='Blue'>Destacadas</Etiqueta>
@@ -137,7 +127,7 @@ const Main = () => {
                                 {!isFetching && (
                                     destacadas.map(item =>
                                         (<Card key={item.id}>
-                                            <Link to={`/destacadas/${item.slug}`}>
+                                            <Link to={`/${item.slug}`}>
                                                     <img src={item.imagen_destacada} alt="" />
                                                 <Wrap color="Violet">
                                                     <Tag color='Green'>{item.categorias.nombre} Sociedad</Tag>
@@ -163,7 +153,7 @@ const Main = () => {
                                 {!isFetching && (
                                     localitos.map(item =>
                                         (<Card key={item.id}>
-                                            <Link to={`/locales/${item.slug}`}>
+                                            <Link to={`/${item.slug}`}>
                                                     <img src={item.imagen_destacada} alt="" />
                                                 <Wrap>
                                                     <Titulo>{item.titulo}</Titulo>
@@ -178,7 +168,7 @@ const Main = () => {
                                 {!isFetching && (
                                     provinciales.map(item =>
                                         (<Card key={item.id}>
-                                            <Link to={`/provinciales/${item.slug}`}>
+                                            <Link to={`/${item.slug}`}>
                                                     <img src={item.imagen_destacada} alt="" />
                                                 <Wrap>
                                                     <Tag>Política</Tag>
@@ -195,7 +185,7 @@ const Main = () => {
                                 {!isFetching && (
                                     nacionales.map(item =>
                                         (<Card key={item.id}>
-                                            <Link to={`/nacionales/${item.slug}`}>
+                                            <Link to={`/${item.slug}`}>
                                                     <img src={item.imagen_destacada} alt="" />
                                                 <Wrap>
                                                     <Tag>Política</Tag>
@@ -211,7 +201,7 @@ const Main = () => {
                                 {!isFetching && (
                                     internacionales.map(item =>
                                         (<Card key={item.id}>
-                                            <Link to={`/internacionales/${item.slug}`}>
+                                            <Link to={`/${item.slug}`}>
                                                     <img src={item.imagen_destacada} alt="" />
                                                 <Wrap>
                                                     <Tag>Política</Tag>
@@ -227,7 +217,7 @@ const Main = () => {
                                 {!isFetching && (
                                     orbitando.map(item =>
                                         (<Card key={item.id}>
-                                            <Link to={`/orbitando/${item.slug}`}>
+                                            <Link to={`/${item.slug}`}>
                                                     <img src={item.imagen_destacada} alt="" />
                                                 <Wrap>
                                                     <Titulo>{item.titulo}</Titulo>
@@ -259,7 +249,7 @@ const Main = () => {
                                 {!isFetching && (
                                     cafeacademico.map(item =>
                                         (<Card key={item.id}>
-                                            <Link to={`/cafe-academico/${item.slug}`}>
+                                            <Link to={`/${item.slug}`}>
                                                     <img src={item.imagen_destacada} alt="" />
                                                 <Wrap>
                                                     <Titulo>{item.titulo}</Titulo>
@@ -273,7 +263,7 @@ const Main = () => {
                                 {!isFetching && (
                                     informaciondespierta.map(item =>
                                         (<Card key={item.id}>
-                                            <Link to={`/informacion-despierta/${item.slug}`}>
+                                            <Link to={`/${item.slug}`}>
                                                     <img src={item.imagen_destacada} alt="" />
                                                 <Wrap>
                                                     <Titulo>{item.titulo}</Titulo>
@@ -287,7 +277,7 @@ const Main = () => {
                                 {!isFetching && (
                                     emprendimientos.map(item =>
                                         (<Card key={item.id}>
-                                            <Link to={`/emprendimientos/${item.slug}`}>
+                                            <Link to={`/${item.slug}`}>
                                                     <img src={item.imagen_destacada} alt="" />
                                                 <Wrap>
                                                     <Titulo>{item.titulo}</Titulo>
@@ -302,7 +292,7 @@ const Main = () => {
                                 {!isFetching && (
                                     cultura.map(item =>
                                         (<Card key={item.id}>
-                                            <Link to={`/cultura/${item.slug}`}>
+                                            <Link to={`/${item.slug}`}>
                                                     <img src={item.imagen_destacada} alt="" />
                                                 <Wrap>
                                                     <Titulo height='8rem' >{item.titulo}</Titulo>
@@ -319,7 +309,7 @@ const Main = () => {
                                 {!isFetching && (
                                     diversidad.map(item =>
                                         (<Card key={item.id}>
-                                            <Link to={`/diversidad/${item.slug}`}>
+                                            <Link to={`/${item.slug}`}>
                                                     <img src={item.imagen_destacada} alt="" />
                                                 <Wrap>
                                                     <Titulo>{item.titulo}</Titulo>

@@ -12,7 +12,8 @@ export const Container = styled.div`
 export const Etiqueta = styled.h2` 
     text-align: left;
     margin: 3.5rem 0 2rem 0;
-    padding-left: 1rem;
+    padding-left: 10px;
     border-left: 5px solid ${props => Colors[props.color]};
-
+    font-size: 1.2rem;
+    color: #444;
 `

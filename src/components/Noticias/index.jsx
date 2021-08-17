@@ -9,7 +9,7 @@ const Noticias = (props) => {
 
         const {etiqueta} = props
         
-
+    
         const { isLoading,  apiData, serverError } = useFetch(
         `https://wp.ojosdecafe.com/?rest_route=/gs/v1/etiqueta/${etiqueta}`
         );
@@ -18,12 +18,13 @@ const Noticias = (props) => {
         const [noticias, setNoticias] = useState([]);
         
         useEffect(() => {
-
-            if(apiData && noticias.length === 0){
-                setNoticias(apiData.listado)
+            //quite la condicion de que este vacia para que se pueda cambiar la etiqueta desde el menu
+            if(apiData){
+                setNoticias(apiData.listado) 
             }
         }, [noticias, setNoticias, apiData]);
 
+        
    
     return (
         <Wrapper>

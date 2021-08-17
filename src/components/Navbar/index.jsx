@@ -73,13 +73,13 @@ const Navbar = () => {
             {menu ? <Menu>
                 <ItemMenu to="/locales" onClick={openMenu}>Locales
                 </ItemMenu>
-                <ItemMenu to="/provinciales">Provinciales</ItemMenu>
-                <ItemMenu to="/nacionales">Nacionales</ItemMenu>
-                <ItemMenu to="/internacionales">Internacionales</ItemMenu>
-                <ItemMenu to="/orbitando">Orbitando</ItemMenu>
-                <ItemMenu to="/emprendimientos">Emprendimientos</ItemMenu>
-                <ItemMenu to="/cultura">Cultura</ItemMenu>
-                <ItemMenu to="/diversidad">Diversidad</ItemMenu>
+                <ItemMenu to="/provinciales" onClick={openMenu}>Provinciales</ItemMenu>
+                <ItemMenu to="/nacionales" onClick={openMenu}>Nacionales</ItemMenu>
+                <ItemMenu to="/internacionales" onClick={openMenu}>Internacionales</ItemMenu>
+                <ItemMenu to="/orbitando" onClick={openMenu}>Orbitando</ItemMenu>
+                <ItemMenu to="/emprendimientos" onClick={openMenu}>Emprendimientos</ItemMenu>
+                <ItemMenu to="/cultura" onClick={openMenu}>Cultura</ItemMenu>
+                <ItemMenu to="/diversidad" onClick={openMenu}>Diversidad</ItemMenu>
             </Menu> : 
             <Submenu>
                 <GroupSubmenu>
